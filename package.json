@@ -7,25 +7,37 @@
   "private": true,
   "packageManager": "yarn@3.0.2",
   "scripts": {
-    "build": "rm -rf built && swc src --out-dir built --sync && tsc --pretty --skipLibCheck --declaration --emitDeclarationOnly",
-    "build:watch": "concurrently 'swc src -w --out-dir built --sync' 'tsc -w --pretty --skipLibCheck --declaration --emitDeclarationOnly'",
-    "release": "standard-version",
-    "lint": "eslint --ext .js,.ts src"
+    "start": "DEBUG='catoofrint*' ts-node scripts/start",
+    "debug": "DEBUG='*' ts-node scripts/start",
+    "test": "DEBUG='catoofrint*' tap --ts --reporter=spec --timeout=5",
+    "lint": "eslint --ext .js,.ts src",
+    "release": "standard-version"
   },
   "devDependencies": {
-    "@swc/cli": "^0.1.51",
+    "@sinclair/typebox": "^0.20.5",
     "@swc/core": "^1.2.92",
+    "@swc/helpers": "^0.2.13",
+    "@types/node": "^16.10.2",
     "@typescript-eslint/eslint-plugin": "^4.32.0",
     "@typescript-eslint/parser": "^4.32.0",
-    "chokidar": "^3.5.2",
-    "concurrently": "^6.2.2",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-import-resolver-node": "^0.3.6",
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
+    "pino-pretty": "^7.0.1",
     "standard-version": "^9.3.1",
+    "tap": "^15.0.10",
+    "tap-yaml": "^1.0.0",
+    "ts-node": "^10.2.1",
     "typescript": "^4.4.3"
+  },
+  "dependencies": {
+    "@types/tap": "^15.0.5",
+    "ajv": "^8.6.3",
+    "ajv-formats": "^2.1.1",
+    "fastify": "^3.21.6",
+    "fastify-no-additional-properties": "^2.2.0"
   }
 }

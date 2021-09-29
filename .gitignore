@@ -1,5 +1,6 @@
 built
 .DS_Store
+/src/preferences.ts
 
 # Logs
 logs
